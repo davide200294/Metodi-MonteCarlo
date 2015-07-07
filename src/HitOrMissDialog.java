@@ -37,6 +37,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         dev_standard_result = new javax.swing.JLabel();
         confidence_result = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(0, 350));
 
         jLabel1.setText("Dati Algoritmo Hit or Miss");
