@@ -13,7 +13,7 @@ public class SampleMean {
         n = n1;    a = a1;  b = b1;
     }
     
-    public double log2(){
+    public double expLog(){
         double [] vet = new double [n];
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
@@ -22,7 +22,7 @@ public class SampleMean {
          
     }
     
-    public double log(){
+    public double logarithmic(){
         double [] vet = new double [n];
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
@@ -31,7 +31,7 @@ public class SampleMean {
          
     }
     
-    public double x2(){
+    public double exponential(){
         double [] vet = new double [n];
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
@@ -40,7 +40,7 @@ public class SampleMean {
          
     }
     
-    public double x(){
+    public double linear(){
         double [] vet = new double [n];
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
