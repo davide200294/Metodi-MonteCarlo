@@ -44,16 +44,16 @@ public class HitOrMiss {
             dev_stand[k] = (float)Math.pow((p*(1-p))/iteration[k], 2);
             media[k] = (float) 4*p;
             if(perc == 0){
-                confidenza[k][0] = (float) (p-1.64f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.64f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.64f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.64f*dev_stand[k]));
                 }
             else if(perc == 1){
-                confidenza[k][0] = (float) (p-1.96f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.96f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.96f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.96f*dev_stand[k]));
                 }
             else if(perc == 2){
-                confidenza[k][0] = (float) (p-2.57f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+2.57f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(2.57f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(2.57f*dev_stand[k]));
                 }
             }
         return 0f;
@@ -90,16 +90,16 @@ public class HitOrMiss {
             dev_stand[k] = (float)Math.pow((p*(1-p))/iteration[k], 2);
             media[k] = (float) 4*p;
             if(perc == 0){
-                confidenza[k][0] = (float) (p-1.64f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.64f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.64f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.64f*dev_stand[k]));
                 }
             else if(perc == 1){
-                confidenza[k][0] = (float) (p-1.96f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.96f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.96f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.96f*dev_stand[k]));
                 }
             else if(perc == 2){
-                confidenza[k][0] = (float) (p-2.57f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+2.57f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(2.57f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(2.57f*dev_stand[k]));
                 }
             }
         return 0f;
@@ -136,16 +136,16 @@ public class HitOrMiss {
             dev_stand[k] = (float)Math.pow((p*(1-p))/iteration[k], 2);
             media[k] = (float) 4*p;
             if(perc == 0){
-                confidenza[k][0] = (float) (p-1.64f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.64f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.64f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.64f*dev_stand[k]));
                 }
             else if(perc == 1){
-                confidenza[k][0] = (float) (p-1.96f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.96f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.96f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.96f*dev_stand[k]));
                 }
             else if(perc == 2){
-                confidenza[k][0] = (float) (p-2.57f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+2.57f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(2.57f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(2.57f*dev_stand[k]));
                 }
             }
         return 0f;
@@ -182,16 +182,16 @@ public class HitOrMiss {
             dev_stand[k] = (float)Math.pow((p*(1-p))/iteration[k], 2);
             media[k] = (float) 4*p;
             if(perc == 0){
-                confidenza[k][0] = (float) (p-1.64f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.64f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.64f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.64f*dev_stand[k]));
                 }
             else if(perc == 1){
-                confidenza[k][0] = (float) (p-1.96f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+1.96f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(1.96f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(1.96f*dev_stand[k]));
                 }
             else if(perc == 2){
-                confidenza[k][0] = (float) (p-2.57f*dev_stand[k]);
-                confidenza[k][1] = (float) (p+2.57f*dev_stand[k]);
+                confidenza[k][0] = (float) (p-(2.57f*dev_stand[k]));
+                confidenza[k][1] = (float) (p+(2.57f*dev_stand[k]));
                 }
             }
         return 0f;

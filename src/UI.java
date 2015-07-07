@@ -142,7 +142,7 @@ public class UI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(linear_fun)
                 .addGap(15, 15, 15)
                 .addComponent(exp_fun)
@@ -152,7 +152,7 @@ public class UI extends javax.swing.JFrame {
                 .addComponent(expLog_fun)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(confidence_interval, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,9 +185,12 @@ public class UI extends javax.swing.JFrame {
         int a = Integer.parseInt(jTextFieldA.getText());
         int b = Integer.parseInt(jTextFieldB.getText());
         int perc = jList1.getSelectedIndex();
+        System.out.println(perc);
         int n = Integer.parseInt(TextField_NSM.getText());
         frameGraphHitOrMiss();
         frameGraphSampleMean();
+        HitOrMissDialog homDialog = new HitOrMissDialog();
+        homDialog.setVisible(true);
         HitOrMiss hom = new HitOrMiss(a, b, perc);
         SampleMean sm = new SampleMean(n,a,b);
         if(linear_fun.isSelected()){
@@ -216,13 +219,15 @@ public class UI extends javax.swing.JFrame {
         JFrame graphHoM = new JFrame("Grafico Hit or Miss");
         graphHoM.setSize(500, 500);
         graphHoM.setLocation(260, 0);
+        graphHoM.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         graphHoM.setVisible(true);
     }
     public void frameGraphSampleMean(){
-        JFrame graphHoM = new JFrame("Grafico Sample Mean");
-        graphHoM.setSize(500, 500);
-        graphHoM.setLocation(825, 0);
-        graphHoM.setVisible(true);
+        JFrame graphSM = new JFrame("Grafico Sample Mean");
+        graphSM.setSize(500, 500);
+        graphSM.setLocation(825, 0);
+        graphSM.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        graphSM.setVisible(true);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
