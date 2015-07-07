@@ -144,18 +144,6 @@ public class UI extends javax.swing.JFrame {
         frameGraphHitOrMiss();
         frameGraphSampleMean();
         HitOrMiss hom = new HitOrMiss(a, b);
-        if(linear_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissLinear()+"");
-        }
-        else if(exp_fun.isSelected()){
-           HoM_result.setText(hom.hitOrMissExp()+""); 
-        }
-        if(log_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissLog()+"");
-        }
-        else if(expLog_fun.isSelected()){
-           HoM_result.setText(hom.hitOrMissExpLog()+""); 
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void frameGraphHitOrMiss(){
