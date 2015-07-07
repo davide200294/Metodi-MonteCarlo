@@ -14,10 +14,13 @@ import javax.swing.JFrame;
  * @author davidetumminello
  */
 public class UI extends javax.swing.JFrame {
-
+    
+    float risultati[][] = new float[15][2];
+    
     
     public UI() {
         initComponents();
+        
     }
 
     /**
@@ -189,24 +192,38 @@ public class UI extends javax.swing.JFrame {
         int n = Integer.parseInt(TextField_NSM.getText());
         frameGraphHitOrMiss();
         frameGraphSampleMean();
-        HitOrMissDialog homDialog = new HitOrMissDialog();
-        homDialog.setVisible(true);
         HitOrMiss hom = new HitOrMiss(a, b, perc);
         SampleMean sm = new SampleMean(n,a,b);
         if(linear_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissLinear()+"");
+            //HoM_result.setText(hom.hitOrMissLinear()+"");
+            risultati = hom.hitOrMissLinear();
+            HitOrMissDialog homDialog = new HitOrMissDialog();
+            homDialog.setRisultati(risultati);
+            homDialog.setVisible(true);
             SM_result.setText(sm.linear()+"");
         }
         if(exp_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissExp()+"");
+            //HoM_result.setText(hom.hitOrMissExp()+"");
+            risultati = hom.hitOrMissExp();
+            HitOrMissDialog homDialog = new HitOrMissDialog();
+            homDialog.setVisible(true);
+            homDialog.setRisultati(risultati);
             SM_result.setText(sm.exponential()+"");
         }
         if(log_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissLog()+"");
+            //HoM_result.setText(hom.hitOrMissLog()+"");
+            risultati = hom.hitOrMissLog();
+            HitOrMissDialog homDialog = new HitOrMissDialog();
+            homDialog.setVisible(true);
+            homDialog.setRisultati(risultati);
             SM_result.setText(sm.logarithmic()+"");
         }
         if(expLog_fun.isSelected()){
-            HoM_result.setText(hom.hitOrMissExpLog()+"");
+            //HoM_result.setText(hom.hitOrMissExpLog()+"");
+            risultati = hom.hitOrMissExpLog();
+            HitOrMissDialog homDialog = new HitOrMissDialog();
+            homDialog.setVisible(true);
+            homDialog.setRisultati(risultati);
             SM_result.setText(sm.expLog()+"");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -228,6 +245,12 @@ public class UI extends javax.swing.JFrame {
         graphSM.setLocation(825, 0);
         graphSM.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         graphSM.setVisible(true);
+    }
+    
+    public float[][] getRisultati(){
+        for(int i=0;i<5;i++)
+            System.out.println("in method: "+risultati[i][0]);
+        return risultati;
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
