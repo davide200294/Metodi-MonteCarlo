@@ -184,9 +184,11 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int a = Integer.parseInt(jTextFieldA.getText());
         int b = Integer.parseInt(jTextFieldB.getText());
+        int n = Integer.parseInt(TextField_NSM.getText());
         frameGraphHitOrMiss();
         frameGraphSampleMean();
         HitOrMiss hom = new HitOrMiss(a, b);
+        SampleMean hom1 = new SampleMean(n,a,b);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TextField_NSMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_NSMActionPerformed
