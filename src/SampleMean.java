@@ -17,8 +17,9 @@ public class SampleMean {
         double [] vet = new double [n];
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
-            //System.out.println("x"+i+": "+ vet[i]);
-        return sum(vet,0)*((b-a)/n);
+        
+        return (sum(vet,0)*(b-a))/n;
+        
          
     }
     
@@ -27,7 +28,7 @@ public class SampleMean {
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
             //System.out.println("x"+i+": "+ vet[i]);
-        return sum(vet,1)*((b-a)/n);
+        return (sum(vet,1)*(b-a))/n;
          
     }
     
@@ -36,7 +37,7 @@ public class SampleMean {
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
             //System.out.println("x"+i+": "+ vet[i]);
-        return sum(vet,2)*((b-a)/n);
+        return (sum(vet,2)*(b-a))/n;
          
     }
     
@@ -45,7 +46,7 @@ public class SampleMean {
         for(int i = 0; i<vet.length; i++)
             vet[i] = a+(Math.random()*(b-a));
             //System.out.println("x"+i+": "+ vet[i]);
-        return sum(vet,3)*((b-a)/n);
+        return (sum(vet,3)*(b-a))/n;
          
     }
     
@@ -69,6 +70,7 @@ public class SampleMean {
             for(int i = 0; i<vet.length; i++)
                 somma+=vet[i];
         }
+        System.out.println("Somma : "+ somma);
         return somma;
     }
     
