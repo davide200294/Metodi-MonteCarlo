@@ -184,10 +184,11 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int a = Integer.parseInt(jTextFieldA.getText());
         int b = Integer.parseInt(jTextFieldB.getText());
+        int perc = jList1.getSelectedIndex();
         int n = Integer.parseInt(TextField_NSM.getText());
         frameGraphHitOrMiss();
         frameGraphSampleMean();
-        HitOrMiss hom = new HitOrMiss(a, b);
+        HitOrMiss hom = new HitOrMiss(a, b, perc);
         SampleMean sm = new SampleMean(n,a,b);
         if(linear_fun.isSelected()){
             HoM_result.setText(hom.hitOrMissLinear()+"");
