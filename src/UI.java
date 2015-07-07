@@ -214,14 +214,12 @@ public class UI extends javax.swing.JFrame {
     public void frameGraphHitOrMiss(){
         JFrame graphHoM = new JFrame("Grafico Hit or Miss");
         graphHoM.setSize(500, 500);
-        graphHoM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         graphHoM.setLocation(260, 0);
         graphHoM.setVisible(true);
     }
     public void frameGraphSampleMean(){
         JFrame graphHoM = new JFrame("Grafico Sample Mean");
         graphHoM.setSize(500, 500);
-        graphHoM.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         graphHoM.setLocation(825, 0);
         graphHoM.setVisible(true);
     }
