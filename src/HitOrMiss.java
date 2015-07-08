@@ -37,8 +37,8 @@ public class HitOrMiss {
             System.out.println("k: "+k+" - iterazioni "+iteration[k]);
             for (int i=0; i<iteration[k];i++){
                 float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (a+Math.random()*c);
-            
+                float y = (float) (Math.random()*c);
+                
                 float z = a + x*(b-a);
                 
                 if(z>=c*y)
@@ -87,7 +87,7 @@ public class HitOrMiss {
             nh = 0;
             for (int i=0; i<iteration[k];i++){
                 float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (a+Math.random()*c);
+                float y = (float) (Math.random()*c);
             
                 float z = a + x*(b-a);
             
@@ -136,7 +136,7 @@ public class HitOrMiss {
             for (int i=0; i<iteration[k];i++){
                 
                 float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (a+Math.random()*c);
+                float y = (float) (Math.random()*c);
             
                 float z = a + x*(b-a);
             
@@ -184,8 +184,8 @@ public class HitOrMiss {
             nh = 0;
             for (int i=0; i<iteration[k];i++){
                 float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (a+Math.random()*c);
-            
+                float y = (float) (Math.random()*c);
+                
                 float z = a + x*(b-a);
             
                 if(Math.log(z)*Math.log(z)>=c*y)
