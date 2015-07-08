@@ -1,5 +1,7 @@
 
 import java.awt.Color;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,10 +17,13 @@ public class HitOrMissDialog extends javax.swing.JFrame {
 
     //private UI ui;
     private float[][] risultati = new float[15][2];
+    DecimalFormat df; 
+    
     
     public HitOrMissDialog(){
         //ui = new UI();
         initComponents();
+        df = new DecimalFormat("##.##");
     }
     
     public void setRisultati(float risultati[][]){
@@ -65,7 +70,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         });
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
+                jList1MousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(jList1);
@@ -115,9 +120,9 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(media_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(dev_standard_result, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dev_standard_result, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -128,16 +133,15 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        
-        for(int i=0;i<5;i++)
-            
-        
-        media_result.setText(risultati[jList1.getSelectedIndex()][0]+"");
+    private void jList1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MousePressed
+        df.setRoundingMode(RoundingMode.UP);
+        media_result.setText(df.format(risultati[jList1.getSelectedIndex()][0])+"");
         media_result.setForeground(Color.red);
-        dev_standard_result.setText(risultati[jList1.getSelectedIndex()+5][0]+"");
+        dev_standard_result.setText(df.format(risultati[jList1.getSelectedIndex()+5][0])+"");
         dev_standard_result.setForeground(Color.red);
-    }//GEN-LAST:event_jList1MouseClicked
+        confidence_result.setText("[ "+df.format(risultati[jList1.getSelectedIndex()+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+        confidence_result.setForeground(Color.red);
+    }//GEN-LAST:event_jList1MousePressed
     
     
     
