@@ -11,12 +11,12 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author davidetumminello
+ * @author davidetumminello&&giovanniguerrieri
  */
 public class UI extends javax.swing.JFrame {
     
     float risultati[][] = new float[15][2];
-    
+    double risultati1[] = new double[5];
     
     public UI() {
         initComponents();
@@ -193,13 +193,21 @@ public class UI extends javax.swing.JFrame {
         frameGraphHitOrMiss();
         frameGraphSampleMean();
         HitOrMiss hom = new HitOrMiss(a, b, perc);
-        SampleMean sm = new SampleMean(n,a,b);
+        SampleMean sm = new SampleMean(a,b);
+        AnthiteticVariable av = new AnthiteticVariable();
         if(linear_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissLinear()+"");
             risultati = hom.hitOrMissLinear();
+            risultati1 = sm.genera(3);
             HitOrMissDialog homDialog = new HitOrMissDialog();
             FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
             homDialog.setRisultati(risultati);
+            sm.setRisultati(risultati);
+            sm.setRisultati1(risultati1);
+            av.setRisultati(risultati);
+            av.setRisultati1(risultati1);
+            sm.stampa();
+            av.Cov();
             homDialog.setVisible(true);
             HOMGraph.setVisible(true);
             SM_result.setText(sm.linear()+"");
@@ -207,33 +215,54 @@ public class UI extends javax.swing.JFrame {
         if(exp_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissExp()+"");
             risultati = hom.hitOrMissExp();
+            risultati1 = sm.genera(2);
             HitOrMissDialog homDialog = new HitOrMissDialog();
             FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
             frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            sm.setRisultati(risultati);
+            sm.setRisultati1(risultati1);
+            av.setRisultati(risultati);
+            av.setRisultati1(risultati1);
+            sm.stampa();
+            av.Cov();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.exponential()+"");
         }
         if(log_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissLog()+"");
             risultati = hom.hitOrMissLog();
+            risultati1 = sm.genera(1);
             HitOrMissDialog homDialog = new HitOrMissDialog();
             FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
             frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            sm.setRisultati(risultati);
+            sm.setRisultati1(risultati1);
+            av.setRisultati(risultati);
+            av.setRisultati1(risultati1);
+            sm.stampa();
+            av.Cov();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.logarithmic()+"");
         }
         if(expLog_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissExpLog()+"");
             risultati = hom.hitOrMissExpLog();
+            risultati1 = sm.genera(0);
             HitOrMissDialog homDialog = new HitOrMissDialog();
             FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
             frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            sm.setRisultati(risultati);
+            sm.setRisultati1(risultati1);
+            av.setRisultati(risultati);
+            av.setRisultati1(risultati1);
+            sm.stampa();
+            av.Cov();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.expLog()+"");
         }

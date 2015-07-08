@@ -5,76 +5,80 @@
  */
 
 public class SampleMean {
-    private int n;
+    //private int n;
     private int a;
     private int b;
+    protected double[] risultati1 = new double[5];
+    protected float [][] risultati = new float[15][2]; 
+    protected int tentativi[] = new int [5];
     
-    public SampleMean(int n1, int a1, int b1){
-        n = n1;    a = a1;  b = b1;
+    public SampleMean(int a1, int b1){
+        a = a1;  b = b1;
+        tentativi[0]=10;
+        tentativi[1]=100;
+        tentativi[2]=1000;
+        tentativi[3]=10000;
+        tentativi[4]=100000;
+       
+    }
+    
+    
+    
+    public double [] genera(int n){
+        for(int i = 0; i<tentativi.length; i++){
+            double tmp = 0;
+            for(int j = 0; j<tentativi[i]; j++){
+                if(n == 0)
+                    tmp+= expLog();
+                else if(n==1)
+                    tmp+= logarithmic();
+                else if(n==2)
+                    tmp+= exponential();
+                else
+                    tmp+= linear();
+            }
+            
+            risultati1[i]+=(tmp*(b-a))/tentativi[i];
+        }
+        return risultati1;
+    }
+    
+    public void stampa(){
+        System.out.println("HM      SM");
+        for(int i = 0; i<risultati1.length; i++){
+            System.out.println(risultati[i][0]+"      "+risultati1[i]);
+       }
+    }
+    
+    public void setRisultati1(double [] risultati){
+        this.risultati1 = risultati;
+    }
+    
+    public void setRisultati(float [][] risultati){
+        this.risultati = risultati;
     }
     
     public double expLog(){
-        double [] vet = new double [n];
-        for(int i = 0; i<vet.length; i++)
-            vet[i] = a+(Math.random()*(b-a));
-        
-        return (sum(vet,0)*(b-a))/n;
-        
-         
+        double x = a+(Math.random()*(b-a));
+        return flog2(x);   
     }
     
     public double logarithmic(){
-        double [] vet = new double [n];
-        for(int i = 0; i<vet.length; i++)
-            vet[i] = a+(Math.random()*(b-a));
-            //System.out.println("x"+i+": "+ vet[i]);
-        return (sum(vet,1)*(b-a))/n;
-         
+        double x = a+(Math.random()*(b-a));
+        return flog(x);
     }
     
     public double exponential(){
-        double [] vet = new double [n];
-        for(int i = 0; i<vet.length; i++)
-            vet[i] = a+(Math.random()*(b-a));
-            //System.out.println("x"+i+": "+ vet[i]);
-        return (sum(vet,2)*(b-a))/n;
-         
+        
+        double x = a+(Math.random()*(b-a));
+        return fx2(x);
     }
     
     public double linear(){
-        double [] vet = new double [n];
-        for(int i = 0; i<vet.length; i++)
-            vet[i] = a+(Math.random()*(b-a));
-            //System.out.println("x"+i+": "+ vet[i]);
-        return (sum(vet,3)*(b-a))/n;
-         
+        return a+(Math.random()*(b-a));
     }
-    
-    
-    
-    private double sum(double [] vet, int n){ 
-        double somma = 0;
-        if(n == 0){ // funzione log2
-            for(int i = 0; i<vet.length; i++)
-                somma+=flog2(vet[i]);
-        }
-        else if(n==1){ //funzione log
-            for(int i = 0; i<vet.length; i++)
-                somma+=flog(vet[i]);
-        }
-        else if (n == 2){ //funzione x^2
-            for(int i = 0; i<vet.length; i++)
-                somma+=fx2(vet[i]);
-        }
-        else{ //funzione lineare
-            for(int i = 0; i<vet.length; i++)
-                somma+=vet[i];
-        }
-        System.out.println("Somma : "+ somma);
-        return somma;
-    }
-    
-    private double flog2(double x){
+      
+    public double flog2(double x){
         return Math.pow(Math.log(x),2);
     }
     private double flog(double x){
