@@ -198,32 +198,43 @@ public class UI extends javax.swing.JFrame {
             //HoM_result.setText(hom.hitOrMissLinear()+"");
             risultati = hom.hitOrMissLinear();
             HitOrMissDialog homDialog = new HitOrMissDialog();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
             homDialog.setRisultati(risultati);
             homDialog.setVisible(true);
+            HOMGraph.setVisible(true);
             SM_result.setText(sm.linear()+"");
         }
         if(exp_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissExp()+"");
             risultati = hom.hitOrMissExp();
             HitOrMissDialog homDialog = new HitOrMissDialog();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
+            frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            HOMGraph.setVisible(true);
             SM_result.setText(sm.exponential()+"");
         }
         if(log_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissLog()+"");
             risultati = hom.hitOrMissLog();
             HitOrMissDialog homDialog = new HitOrMissDialog();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
+            frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            HOMGraph.setVisible(true);
             SM_result.setText(sm.logarithmic()+"");
         }
         if(expLog_fun.isSelected()){
             //HoM_result.setText(hom.hitOrMissExpLog()+"");
             risultati = hom.hitOrMissExpLog();
             HitOrMissDialog homDialog = new HitOrMissDialog();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
+            frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            HOMGraph.setVisible(true);
             SM_result.setText(sm.expLog()+"");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -233,18 +244,10 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_TextField_NSMActionPerformed
 
     public void frameGraphHitOrMiss(){
-        JFrame graphHoM = new JFrame("Grafico Hit or Miss");
-        graphHoM.setSize(500, 500);
-        graphHoM.setLocation(260, 0);
-        graphHoM.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        graphHoM.setVisible(true);
+        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
     }
     public void frameGraphSampleMean(){
-        JFrame graphSM = new JFrame("Grafico Sample Mean");
-        graphSM.setSize(500, 500);
-        graphSM.setLocation(825, 0);
-        graphSM.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        graphSM.setVisible(true);
+        //FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
     }
     
     public float[][] getRisultati(){
