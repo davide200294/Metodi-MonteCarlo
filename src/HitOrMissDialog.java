@@ -46,7 +46,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        media_result = new javax.swing.JLabel();
+        theta_result = new javax.swing.JLabel();
         dev_standard_result = new javax.swing.JLabel();
         confidence_result = new javax.swing.JLabel();
 
@@ -57,7 +57,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
 
         jLabel2.setText("N");
 
-        jLabel3.setText("Media");
+        jLabel3.setText("Theta");
 
         jLabel4.setText("Dev. Standard");
 
@@ -87,7 +87,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(media_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -118,7 +118,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(media_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dev_standard_result, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,8 +135,8 @@ public class HitOrMissDialog extends javax.swing.JFrame {
 
     private void jList1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MousePressed
         df.setRoundingMode(RoundingMode.UP);
-        media_result.setText(df.format(risultati[jList1.getSelectedIndex()][0])+"");
-        media_result.setForeground(Color.red);
+        theta_result.setText(df.format(risultati[jList1.getSelectedIndex()][0])+"");
+        theta_result.setForeground(Color.red);
         dev_standard_result.setText(df.format(risultati[jList1.getSelectedIndex()+5][0])+"");
         dev_standard_result.setForeground(Color.red);
         confidence_result.setText("[ "+df.format(risultati[jList1.getSelectedIndex()+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
@@ -190,6 +190,6 @@ public class HitOrMissDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel media_result;
+    private javax.swing.JLabel theta_result;
     // End of variables declaration//GEN-END:variables
 }
