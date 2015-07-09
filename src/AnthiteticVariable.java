@@ -35,6 +35,12 @@ public class AnthiteticVariable {
         
     }
     
+    public void stampa(){
+        System.out.println("HM      SM");
+        for(int i = 0; i<risultati1.length; i++){
+            System.out.println(risultati[i][0]+"      "+risultati1[i]);
+       }
+    }
     
     public void setRisultati1(double [] risultati){
         this.risultati1 = risultati;

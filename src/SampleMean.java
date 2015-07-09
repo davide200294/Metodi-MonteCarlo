@@ -8,8 +8,7 @@ public class SampleMean {
     //private int n;
     private int a;
     private int b;
-    protected double[] risultati1 = new double[5];
-    protected float [][] risultati = new float[15][2]; 
+    protected double[] risultati1 = new double[5]; 
     protected int tentativi[] = new int [5];
     
     public SampleMean(int a1, int b1){
@@ -43,20 +42,12 @@ public class SampleMean {
         return risultati1;
     }
     
-    public void stampa(){
-        System.out.println("HM      SM");
-        for(int i = 0; i<risultati1.length; i++){
-            System.out.println(risultati[i][0]+"      "+risultati1[i]);
-       }
-    }
+    
     
     public void setRisultati1(double [] risultati){
         this.risultati1 = risultati;
     }
     
-    public void setRisultati(float [][] risultati){
-        this.risultati = risultati;
-    }
     
     public double expLog(){
         double x = a+(Math.random()*(b-a));
