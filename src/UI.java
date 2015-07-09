@@ -206,7 +206,8 @@ public class UI extends javax.swing.JFrame {
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
-            av.Cov();
+            av.getCov();
+            av.getVarSM();
             homDialog.setVisible(true);
             HOMGraph.setVisible(true);
             SM_result.setText(sm.linear()+"");
@@ -224,7 +225,8 @@ public class UI extends javax.swing.JFrame {
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
-            av.Cov();
+            av.getCov();
+            av.getVarSM();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.exponential()+"");
         }
@@ -241,7 +243,8 @@ public class UI extends javax.swing.JFrame {
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
-            av.Cov();
+            av.getCov();
+            av.getVarSM();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.logarithmic()+"");
         }
@@ -258,7 +261,8 @@ public class UI extends javax.swing.JFrame {
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
-            av.Cov();
+            av.getCov();
+            av.getVarSM();
             HOMGraph.setVisible(true);
             SM_result.setText(sm.expLog()+"");
         }
