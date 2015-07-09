@@ -29,9 +29,9 @@ public class AnthiteticVariable {
         double sum = 0;
         for(int i = 0; i<risultati1.length; i++)
             sum+= Math.pow((risultati1[i]-mean),2);
-        System.out.println("Varianza...: "+sum/(risultati1.length));
+        System.out.println("Varianza...: "+sum/(risultati1.length-1));
         
-        return sum/(risultati1.length);   
+        return sum/(risultati1.length-1);   
     } 
     
     public double getVarHM(){
@@ -41,7 +41,7 @@ public class AnthiteticVariable {
         for(int i = 0; i<risultati1.length; i++)
             sum+= Math.pow((risultati[i][0]-mean),2);
         
-        return sum/risultati1.length;
+        return sum/(risultati1.length-1);
     }
     
     public double getMeanSM(){
