@@ -31,7 +31,7 @@ public class AnthiteticVariable {
             cov+=(risultati[i][0]-meanH)*(risultati1[i]-meanS);
         }
         System.out.println("Covarianza.... : "+cov/risultati1.length);
-        return cov;
+        return cov/risultati1.length;
         
     }
     
