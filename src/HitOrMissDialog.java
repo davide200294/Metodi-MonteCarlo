@@ -51,7 +51,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         confidence_result = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(0, 350));
+        setLocation(new java.awt.Point(0, 650));
 
         jLabel1.setText("Risultati Algoritmo Hit or Miss");
 
@@ -71,6 +71,11 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MousePressed(evt);
+            }
+        });
+        jList1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jList1KeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(jList1);
@@ -142,6 +147,29 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         confidence_result.setText("[ "+df.format(risultati[jList1.getSelectedIndex()+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
         confidence_result.setForeground(Color.red);
     }//GEN-LAST:event_jList1MousePressed
+
+    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
+        //System.out.println(evt.getKeyCode());
+        int index = jList1.getSelectedIndex();
+        if(evt.getKeyCode() == 40 && index < 4){
+            df.setRoundingMode(RoundingMode.UP);
+            theta_result.setText(df.format(risultati[index+1][0])+"");
+            theta_result.setForeground(Color.red);
+            dev_standard_result.setText(df.format(risultati[index+1+5][0])+"");
+            dev_standard_result.setForeground(Color.red);
+            confidence_result.setText("[ "+df.format(risultati[index+1+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+            confidence_result.setForeground(Color.red);
+        }
+        if(evt.getKeyCode() == 38 && index >0){
+            df.setRoundingMode(RoundingMode.UP);
+            theta_result.setText(df.format(risultati[index-1][0])+"");
+            theta_result.setForeground(Color.red);
+            dev_standard_result.setText(df.format(risultati[index-1+5][0])+"");
+            dev_standard_result.setForeground(Color.red);
+            confidence_result.setText("[ "+df.format(risultati[index-1+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+            confidence_result.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_jList1KeyPressed
     
     
     
