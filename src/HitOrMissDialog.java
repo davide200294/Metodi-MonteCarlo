@@ -16,13 +16,15 @@ import java.text.DecimalFormat;
 public class HitOrMissDialog extends javax.swing.JFrame {
 
     //private UI ui;
-    private float[][] risultati = new float[15][2];
-    DecimalFormat df; 
+    private float[][] risultati = new float[18][2];
+    DecimalFormat df;
+    int index;
     
     
     public HitOrMissDialog(){
         //ui = new UI();
         initComponents();
+        index = 0;
         df = new DecimalFormat("##.##");
     }
     
@@ -64,7 +66,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         jLabel5.setText("Inter. di confidenza");
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "10", "100", "1000", "10000", "100000" };
+            String[] strings = { "10", "100", "1000", "10000", "100000", "1000000" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -96,7 +98,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -142,32 +144,35 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         df.setRoundingMode(RoundingMode.UP);
         theta_result.setText(df.format(risultati[jList1.getSelectedIndex()][0])+"");
         theta_result.setForeground(Color.red);
-        dev_standard_result.setText(df.format(risultati[jList1.getSelectedIndex()+5][0])+"");
+        dev_standard_result.setText(df.format(risultati[jList1.getSelectedIndex()+6][0])+"");
         dev_standard_result.setForeground(Color.red);
-        confidence_result.setText("[ "+df.format(risultati[jList1.getSelectedIndex()+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+        confidence_result.setText("[ "+df.format(risultati[jList1.getSelectedIndex()+11][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+11][1])+" ]");
         confidence_result.setForeground(Color.red);
+        index = jList1.getSelectedIndex();
     }//GEN-LAST:event_jList1MousePressed
 
     private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
         //System.out.println(evt.getKeyCode());
-        int index = jList1.getSelectedIndex();
-        if(evt.getKeyCode() == 40 && index < 4){
+        //int index = jList1.getSelectedIndex();
+        if(evt.getKeyCode() == 40 && index < 5){
             df.setRoundingMode(RoundingMode.UP);
             theta_result.setText(df.format(risultati[index+1][0])+"");
             theta_result.setForeground(Color.red);
-            dev_standard_result.setText(df.format(risultati[index+1+5][0])+"");
+            dev_standard_result.setText(df.format(risultati[index+1+6][0])+"");
             dev_standard_result.setForeground(Color.red);
-            confidence_result.setText("[ "+df.format(risultati[index+1+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+            confidence_result.setText("[ "+df.format(risultati[index+1+11][0])+" ; "+df.format(risultati[index+1+11][1])+" ]");
             confidence_result.setForeground(Color.red);
+            index++;
         }
         if(evt.getKeyCode() == 38 && index >0){
             df.setRoundingMode(RoundingMode.UP);
             theta_result.setText(df.format(risultati[index-1][0])+"");
             theta_result.setForeground(Color.red);
-            dev_standard_result.setText(df.format(risultati[index-1+5][0])+"");
+            dev_standard_result.setText(df.format(risultati[index-1+6][0])+"");
             dev_standard_result.setForeground(Color.red);
-            confidence_result.setText("[ "+df.format(risultati[index-1+10][0])+" ; "+df.format(risultati[jList1.getSelectedIndex()+10][1])+" ]");
+            confidence_result.setText("[ "+df.format(risultati[index-1+11][0])+" ; "+df.format(risultati[index-1+11][1])+" ]");
             confidence_result.setForeground(Color.red);
+            index--;
         }
     }//GEN-LAST:event_jList1KeyPressed
     

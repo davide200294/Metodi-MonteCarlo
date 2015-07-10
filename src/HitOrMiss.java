@@ -3,8 +3,8 @@ public class HitOrMiss {
     
     int a, b; //intervallo
     float perc; //indice confidenza
-    float risultati[][] = new float[15][2];
-    int iteration[] = new int[5];
+    float risultati[][] = new float[18][2];
+    int iteration[] = new int[6];
     
     public HitOrMiss(int a, int b, float perc) {
         this.a = a;
@@ -15,6 +15,7 @@ public class HitOrMiss {
         iteration[2] = 1000;
         iteration[3] = 10000;
         iteration[4] = 100000;
+        iteration[5] = 1000000;
         
     }
     
@@ -50,20 +51,20 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+5][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
             risultati[k][0] = integral;
             System.out.println("nh = "+nh+" media = "+risultati[k][0]);
             if(perc == 0){
-                risultati[k+10][0] = (float) (integral-(1.64f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.64f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 1){
-                risultati[k+10][0] = (float) (integral-(1.96f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.96f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 2){
-                risultati[k+10][0] = (float) (integral-(2.57f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(2.57f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
                 }
             }
         return risultati;
@@ -98,20 +99,20 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+5][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
-                risultati[k+10][0] = (float) (integral-(1.64f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.64f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 1){
-                risultati[k+10][0] = (float) (integral-(1.96f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.96f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 2){
-                risultati[k+10][0] = (float) (integral-(2.57f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(2.57f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
                 }
             }
         return risultati;
@@ -147,20 +148,20 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+5][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
-                risultati[k+10][0] = (float) (integral-(1.64f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.64f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 1){
-                risultati[k+10][0] = (float) (integral-(1.96f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.96f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 2){
-                risultati[k+10][0] = (float) (integral-(2.57f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(2.57f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
                 }
             }
         return risultati;
@@ -195,20 +196,20 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+5][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
-                risultati[k+10][0] = (float) (integral-(1.64f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.64f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 1){
-                risultati[k+10][0] = (float) (integral-(1.96f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(1.96f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
                 }
             else if(perc == 2){
-                risultati[k+10][0] = (float) (integral-(2.57f*risultati[k+5][0]*c*(b-a)));
-                risultati[k+10][1] = (float) (integral+(2.57f*risultati[k+5][0]*c*(b-a)));
+                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
+                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
                 }
             }
         return risultati;

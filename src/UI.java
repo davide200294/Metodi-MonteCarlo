@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class UI extends javax.swing.JFrame {
     
-    float risultati[][] = new float[15][2];
+    float risultati[][] = new float[18][2];
     double risultati1[] = new double[5];
     
     public UI() {
