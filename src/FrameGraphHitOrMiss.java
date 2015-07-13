@@ -1,11 +1,42 @@
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.JPanel;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.*;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
 
 public class FrameGraphHitOrMiss extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrameGraphHitOrMiss
-     */
+    float risultati[][] = new float[18][2];
+    int iteration[] = new int [6];
+    
     public FrameGraphHitOrMiss() {
+        JPanel p = new JPanel();
+        p.setSize(480, 500);
+        p.add(this.drawGraph());
+        this.add(p);
         initComponents();
+        
+        iteration[0] = 10;
+        iteration[1] = 100;
+        iteration[2] = 1000;
+        iteration[3] = 10000;
+        iteration[4] = 100000;
+        iteration[5] = 1000000;
+        
+    }
+    
+    public void setRisultati(float risultati[][]){
+        this.risultati = risultati;
     }
 
     /**
@@ -19,12 +50,13 @@ public class FrameGraphHitOrMiss extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(260, 0));
+        setSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -33,7 +65,40 @@ public class FrameGraphHitOrMiss extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public ChartPanel drawGraph (){
+        ChartPanel cp;
+        XYSeries series = new XYSeries("Serie");
+        
+        for(int i=0;i<iteration.length;i++)
+            series.add (risultati[i][0], iteration[i]);
+        
+        XYSeriesCollection dataset = new XYSeriesCollection ();
+        dataset.addSeries(series);
+        
+        JFreeChart graph = ChartFactory.createScatterPlot (
+        "Grafico Theta Hit or Miss",
+        "Iterazioni",
+        "Theta",
+        dataset,
+        PlotOrientation.VERTICAL,
+        true,
+        true,
+        false);
+        
+        XYPlot plot = (XYPlot) graph.getPlot ();
 
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer(false, true);
+        renderer.setDrawOutlines (false);
+        renderer.setUseFillPaint (true);
+        renderer.setFillPaint (Color.blue);
+        renderer.setShape (new Ellipse2D.Double (-5, -5, 10, 10));
+        plot.setRenderer (renderer);
+        cp = new ChartPanel(graph);
+        return cp;
+   
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -67,8 +132,10 @@ public class FrameGraphHitOrMiss extends javax.swing.JFrame {
                 new FrameGraphHitOrMiss().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
+
