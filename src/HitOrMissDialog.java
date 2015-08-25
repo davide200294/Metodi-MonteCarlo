@@ -2,6 +2,25 @@
 import java.awt.Color;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.JPanel;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.*;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,17 +38,24 @@ public class HitOrMissDialog extends javax.swing.JFrame {
     private float[][] risultati = new float[18][2];
     DecimalFormat df;
     int index;
-    
+    //FrameGraphHitOrMiss HOMGraph;
     
     public HitOrMissDialog(){
         //ui = new UI();
         initComponents();
         index = 0;
         df = new DecimalFormat("##.##");
+        
     }
     
     public void setRisultati(float risultati[][]){
+        //stampaRisultati();
         this.risultati = risultati;
+    }
+    
+    public void stampaRisultati(){
+        for(int i=0;i<5;i++)
+            System.out.println("DIALOG : "+risultati[i][0]);
     }
 
     /**
@@ -92,22 +118,25 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(dev_standard_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(confidence_result, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))))
+                                .addComponent(confidence_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dev_standard_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
+                                .addGap(213, 213, 213))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel1)))
@@ -123,18 +152,19 @@ public class HitOrMissDialog extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dev_standard_result, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(theta_result, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4))
+                    .addComponent(dev_standard_result, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(confidence_result, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,6 +185,7 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         //System.out.println(evt.getKeyCode());
         //int index = jList1.getSelectedIndex();
         if(evt.getKeyCode() == 40 && index < 5){
+            //stampaRisultati();
             df.setRoundingMode(RoundingMode.UP);
             theta_result.setText(df.format(risultati[index+1][0])+"");
             theta_result.setForeground(Color.red);
@@ -176,7 +207,35 @@ public class HitOrMissDialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jList1KeyPressed
     
-    
+    /*public void showFrameChart(){
+        DefaultCategoryDataset data = new DefaultCategoryDataset();
+        data.addValue(risultati[0][0], ""+risultati[0][0] , "10");
+        data.addValue(risultati[1][0], ""+risultati[1][0] , "100");
+        data.addValue(risultati[2][0], ""+risultati[2][0] , "1000");
+        data.addValue(risultati[3][0], ""+risultati[3][0] , "10000");
+        data.addValue(risultati[4][0], ""+risultati[4][0] , "100000");
+        
+                
+        JFreeChart graph = ChartFactory.createLineChart (
+        "Grafico Theta Hit or Miss",
+        "Iterazioni",
+        "Theta",
+        data,
+        PlotOrientation.VERTICAL,
+        false,
+        false,
+        true);
+        
+        //XYPlot plot = (XYPlot) graph.getPlot ();
+        
+        //BarRenderer renderer = null;
+        CategoryPlot plot = graph.getCategoryPlot();
+        //renderer = new BarRenderer();
+        ChartFrame frame = new ChartFrame("Frame", graph);
+        frame.setVisible(true);
+        frame.setSize(400, 400);
+        frame.setLocation(300, 10);
+    }*/
     
     /**
      * @param args the command line arguments
@@ -212,6 +271,10 @@ public class HitOrMissDialog extends javax.swing.JFrame {
             }
         });
     }
+    
+    /*public void showChart(){
+        HOMGraph = new FrameGraphHitOrMiss();
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel confidence_result;

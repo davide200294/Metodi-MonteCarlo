@@ -190,8 +190,8 @@ public class UI extends javax.swing.JFrame {
         int perc = jList1.getSelectedIndex();
         System.out.println(perc);
         int n = Integer.parseInt(TextField_NSM.getText());
-        frameGraphHitOrMiss();
-        frameGraphSampleMean();
+        //frameGraphHitOrMiss();
+        //frameGraphSampleMean();
         HitOrMiss hom = new HitOrMiss(a, b, perc);
         SampleMean sm = new SampleMean(a,b);
         AnthiteticVariable av = new AnthiteticVariable();
@@ -200,8 +200,9 @@ public class UI extends javax.swing.JFrame {
             risultati = hom.hitOrMissLinear();
             risultati1 = sm.genera(3);
             HitOrMissDialog homDialog = new HitOrMissDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
             homDialog.setRisultati(risultati);
+            //HOMGraph.setRisultati(risultati);
             sm.setRisultati1(risultati1);
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
@@ -209,7 +210,7 @@ public class UI extends javax.swing.JFrame {
             av.getCov();
             av.getVarSM();
             homDialog.setVisible(true);
-            HOMGraph.setVisible(true);
+            //HOMGraph.setVisible(true);
             SM_result.setText(sm.linear()+"");
         }
         if(exp_fun.isSelected()){
@@ -217,17 +218,18 @@ public class UI extends javax.swing.JFrame {
             risultati = hom.hitOrMissExp();
             risultati1 = sm.genera(2);
             HitOrMissDialog homDialog = new HitOrMissDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
-            frameGraphHitOrMiss();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+            //frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            //HOMGraph.setRisultati(risultati);
             sm.setRisultati1(risultati1);
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
             av.getCov();
             av.getVarSM();
-            HOMGraph.setVisible(true);
+            //HOMGraph.setVisible(true);
             SM_result.setText(sm.exponential()+"");
         }
         if(log_fun.isSelected()){
@@ -235,17 +237,18 @@ public class UI extends javax.swing.JFrame {
             risultati = hom.hitOrMissLog();
             risultati1 = sm.genera(1);
             HitOrMissDialog homDialog = new HitOrMissDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
-            frameGraphHitOrMiss();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+            //frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            //HOMGraph.setRisultati(risultati);
             sm.setRisultati1(risultati1);
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
             av.getCov();
             av.getVarSM();
-            HOMGraph.setVisible(true);
+            //HOMGraph.setVisible(true);
             SM_result.setText(sm.logarithmic()+"");
         }
         if(expLog_fun.isSelected()){
@@ -253,17 +256,18 @@ public class UI extends javax.swing.JFrame {
             risultati = hom.hitOrMissExpLog();
             risultati1 = sm.genera(0);
             HitOrMissDialog homDialog = new HitOrMissDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
-            frameGraphHitOrMiss();
+            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+            //frameGraphHitOrMiss();
             homDialog.setVisible(true);
             homDialog.setRisultati(risultati);
+            //HOMGraph.setRisultati(risultati);
             sm.setRisultati1(risultati1);
             av.setRisultati(risultati);
             av.setRisultati1(risultati1);
             av.stampa();
             av.getCov();
             av.getVarSM();
-            HOMGraph.setVisible(true);
+            //HOMGraph.setVisible(true);
             SM_result.setText(sm.expLog()+"");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -273,11 +277,11 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_TextField_NSMActionPerformed
 
     public void frameGraphHitOrMiss(){
-        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
+        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
     }
-    public void frameGraphSampleMean(){
-        //FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss();
-    }
+    /*public void frameGraphSampleMean(){
+        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+    }*/
     
     public float[][] getRisultati(){
         for(int i=0;i<5;i++)
