@@ -37,6 +37,7 @@ public class FrameGraphHitOrMiss {
         data.addValue(risultati[2][0], "risultati" , "1000");
         data.addValue(risultati[3][0], "risultati" , "10000");
         data.addValue(risultati[4][0], "risultati" , "100000");
+        data.addValue(risultati[5][0], "risultati" , "1000000");
         
                 
         JFreeChart graph = ChartFactory.createLineChart (
@@ -54,9 +55,9 @@ public class FrameGraphHitOrMiss {
         //BarRenderer renderer = null;
         CategoryPlot plot = graph.getCategoryPlot();
         //renderer = new BarRenderer();
-        ChartFrame frame = new ChartFrame("Frame", graph);
+        ChartFrame frame = new ChartFrame("Grafico Hit or Miss", graph);
         frame.setVisible(true);
-        frame.setSize(400, 400);
+        frame.setSize(500, 500);
         frame.setLocation(300, 10);
     }
     
