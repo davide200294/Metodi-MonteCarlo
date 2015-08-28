@@ -24,38 +24,48 @@ import org.jfree.ui.RefineryUtilities;
 public class FrameGraphHitOrMiss {
     
     float risultati[][] = new float[18][2];
+    double risultati1[][] = new double[18][2];
     
-    public FrameGraphHitOrMiss(float risultati[][]){
+    public FrameGraphHitOrMiss(float risultati[][], double risultati1[][]){
         this.risultati = risultati;
+        this.risultati1 = risultati1;
         showFrameChart();
     }
     
     public void showFrameChart(){
         DefaultCategoryDataset data = new DefaultCategoryDataset();
-        data.addValue(risultati[0][0], "risultati" , "10");
-        data.addValue(risultati[1][0], "risultati" , "100");
-        data.addValue(risultati[2][0], "risultati" , "1000");
-        data.addValue(risultati[3][0], "risultati" , "10000");
-        data.addValue(risultati[4][0], "risultati" , "100000");
-        data.addValue(risultati[5][0], "risultati" , "1000000");
+        //risultati HitOrMiss
+        data.addValue(risultati[0][0], "Hit or Miss" , "10");
+        data.addValue(risultati[1][0], "Hit or Miss" , "100");
+        data.addValue(risultati[2][0], "Hit or Miss" , "1000");
+        data.addValue(risultati[3][0], "Hit or Miss" , "10000");
+        data.addValue(risultati[4][0], "Hit or Miss" , "100000");
+        data.addValue(risultati[5][0], "Hit or Miss" , "1000000");
+        //risultatiSampleMean
+        data.addValue(risultati1[0][0], "Sample Mean" , "10");
+        data.addValue(risultati1[1][0], "Sample Mean" , "100");
+        data.addValue(risultati1[2][0], "Sample Mean" , "1000");
+        data.addValue(risultati1[3][0], "Sample Mean" , "10000");
+        data.addValue(risultati1[4][0], "Sample Mean" , "100000");
+        data.addValue(risultati1[5][0], "Sample Mean" , "1000000");
         
                 
         JFreeChart graph = ChartFactory.createLineChart (
-        "Grafico Theta Hit or Miss",
+        "Grafico",
         "Iterazioni",
         "Theta",
         data,
         PlotOrientation.VERTICAL,
+        true,
         false,
-        false,
-        true);
+        false);
         
         //XYPlot plot = (XYPlot) graph.getPlot ();
         
         //BarRenderer renderer = null;
         CategoryPlot plot = graph.getCategoryPlot();
         //renderer = new BarRenderer();
-        ChartFrame frame = new ChartFrame("Grafico Hit or Miss", graph);
+        ChartFrame frame = new ChartFrame("Grafico", graph);
         frame.setVisible(true);
         frame.setSize(500, 500);
         frame.setLocation(300, 10);

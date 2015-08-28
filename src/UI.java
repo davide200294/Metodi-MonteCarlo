@@ -2,6 +2,7 @@
 import java.awt.event.ActionEvent;
 import static java.lang.Math.log;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +21,7 @@ public class UI extends javax.swing.JFrame {
     
     public UI() {
         initComponents();
-        
+        //enableButton();
     }
 
     /**
@@ -49,6 +50,14 @@ public class UI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(274, 360));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         buttonGroupFunction.add(linear_fun);
         linear_fun.setLabel("y = x");
@@ -143,107 +152,130 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int a = Integer.parseInt(jTextFieldA.getText());
-        int b = Integer.parseInt(jTextFieldB.getText());
-        int perc = jList1.getSelectedIndex();
-        System.out.println(perc);
-        //int n = Integer.parseInt(TextField_NSM.getText());
-        //frameGraphHitOrMiss();
-        //frameGraphSampleMean();
-        HitOrMiss hom = new HitOrMiss(a, b, perc);
-        SampleMean sm = new SampleMean(a,b, perc);
-        AnthiteticVariable av = new AnthiteticVariable();
-        if(linear_fun.isSelected()){
-            //HoM_result.setText(hom.hitOrMissLinear()+"");
-            risultati = hom.hitOrMissLinear();
-            risultati1 = sm.genera(3);
-            HitOrMissDialog homDialog = new HitOrMissDialog();
-            SampleMeanDialog smDialog = new SampleMeanDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
-            homDialog.setRisultati(risultati);
-            smDialog.setRisultati(risultati1);
-            //HOMGraph.setRisultati(risultati);
-            sm.setRisultati1(risultati1);
-            av.setRisultati(risultati);
-            //av.setRisultati1(risultati1);
-            av.stampa();
-            av.getCov();
-            av.getVarSM();
-            homDialog.setVisible(true);
-            smDialog.setVisible(true);
-            //HOMGraph.setVisible(true);
-            //SM_result.setText(sm.linear()+"");
+        if(linear_fun.isSelected() || exp_fun.isSelected() || log_fun.isSelected() || expLog_fun.isSelected()){
+            if(!jList1.isSelectionEmpty()){
+                if(jTextFieldA.getText().length() != 0 && jTextFieldB.getText().length() != 0){
+                    if(Integer.parseInt(jTextFieldB.getText())>Integer.parseInt(jTextFieldA.getText())){
+                        int a = Integer.parseInt(jTextFieldA.getText());
+                        int b = Integer.parseInt(jTextFieldB.getText());
+                        int perc = jList1.getSelectedIndex();
+                        System.out.println(perc);
+                        //int n = Integer.parseInt(TextField_NSM.getText());
+                        //frameGraphHitOrMiss();
+                        //frameGraphSampleMean();
+                        HitOrMiss hom = new HitOrMiss(a, b, perc);
+                        SampleMean sm = new SampleMean(a,b, perc);
+                        AnthiteticVariable av = new AnthiteticVariable();
+                            if(linear_fun.isSelected()){
+                                //HoM_result.setText(hom.hitOrMissLinear()+"");
+                                risultati = hom.hitOrMissLinear();
+                                risultati1 = sm.genera(3);
+                                HitOrMissDialog homDialog = new HitOrMissDialog();
+                                SampleMeanDialog smDialog = new SampleMeanDialog();
+                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                homDialog.setRisultati(risultati);
+                                smDialog.setRisultati(risultati1);
+                                //HOMGraph.setRisultati(risultati);
+                                sm.setRisultati1(risultati1);
+                                av.setRisultati(risultati);
+                                //av.setRisultati1(risultati1);
+                                av.stampa();
+                                av.getCov();
+                                av.getVarSM();
+                                homDialog.setVisible(true);
+                                smDialog.setVisible(true);
+                                //HOMGraph.setVisible(true);
+                                //SM_result.setText(sm.linear()+"");
+                            }
+                            if(exp_fun.isSelected()){
+                                //HoM_result.setText(hom.hitOrMissExp()+"");
+                                risultati = hom.hitOrMissExp();
+                                risultati1 = sm.genera(2);
+                                HitOrMissDialog homDialog = new HitOrMissDialog();
+                                SampleMeanDialog smDialog = new SampleMeanDialog();
+                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                //frameGraphHitOrMiss();
+                                homDialog.setVisible(true);
+                                homDialog.setRisultati(risultati);
+                                smDialog.setVisible(true);
+                                smDialog.setRisultati(risultati1);
+                                //HOMGraph.setRisultati(risultati);
+                                sm.setRisultati1(risultati1);
+                                av.setRisultati(risultati);
+                                //av.setRisultati1(risultati1);
+                                av.stampa();
+                                av.getCov();
+                                av.getVarSM();
+                                //HOMGraph.setVisible(true);
+                                //SM_result.setText(sm.exponential()+"");
+                            }
+                            if(log_fun.isSelected()){
+                                //HoM_result.setText(hom.hitOrMissLog()+"");
+                                risultati = hom.hitOrMissLog();
+                                risultati1 = sm.genera(1);
+                                HitOrMissDialog homDialog = new HitOrMissDialog();
+                                SampleMeanDialog smDialog = new SampleMeanDialog();
+                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                //frameGraphHitOrMiss();
+                                homDialog.setVisible(true);
+                                smDialog.setVisible(true);
+                                homDialog.setRisultati(risultati);
+                                smDialog.setRisultati(risultati1);
+                                //HOMGraph.setRisultati(risultati);
+                                sm.setRisultati1(risultati1);
+                                av.setRisultati(risultati);
+                                //av.setRisultati1(risultati1);
+                                av.stampa();
+                                av.getCov();
+                                av.getVarSM();
+                                //HOMGraph.setVisible(true);
+                                //SM_result.setText(sm.logarithmic()+"");
+                            }
+                            if(expLog_fun.isSelected()){
+                                //HoM_result.setText(hom.hitOrMissExpLog()+"");
+                                risultati = hom.hitOrMissExpLog();
+                                risultati1 = sm.genera(0);
+                                HitOrMissDialog homDialog = new HitOrMissDialog();
+                                SampleMeanDialog smDialog = new SampleMeanDialog();
+                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                //frameGraphHitOrMiss();
+                                homDialog.setVisible(true);
+                                homDialog.setRisultati(risultati);
+                                smDialog.setVisible(true);
+                                smDialog.setRisultati(risultati1);
+                                //HOMGraph.setRisultati(risultati);
+                                sm.setRisultati1(risultati1);
+                                av.setRisultati(risultati);
+                                //av.setRisultati1(risultati1);
+                                av.stampa();
+                                av.getCov();
+                                av.getVarSM();
+                                //HOMGraph.setVisible(true);
+                                //SM_result.setText(sm.expLog()+"");
+                        }
+                    }
+                    else  JOptionPane.showMessageDialog(null, "L'estremo B è minore dell'estremo A");
+                }
+                else JOptionPane.showMessageDialog(null, "Campi non selezionati correttamente");
+            }
+            else JOptionPane.showMessageDialog(null, "Campi non selezionati correttamente");
         }
-        if(exp_fun.isSelected()){
-            //HoM_result.setText(hom.hitOrMissExp()+"");
-            risultati = hom.hitOrMissExp();
-            risultati1 = sm.genera(2);
-            HitOrMissDialog homDialog = new HitOrMissDialog();
-            SampleMeanDialog smDialog = new SampleMeanDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
-            //frameGraphHitOrMiss();
-            homDialog.setVisible(true);
-            homDialog.setRisultati(risultati);
-            smDialog.setVisible(true);
-            smDialog.setRisultati(risultati1);
-            //HOMGraph.setRisultati(risultati);
-            sm.setRisultati1(risultati1);
-            av.setRisultati(risultati);
-            //av.setRisultati1(risultati1);
-            av.stampa();
-            av.getCov();
-            av.getVarSM();
-            //HOMGraph.setVisible(true);
-            //SM_result.setText(sm.exponential()+"");
-        }
-        if(log_fun.isSelected()){
-            //HoM_result.setText(hom.hitOrMissLog()+"");
-            risultati = hom.hitOrMissLog();
-            risultati1 = sm.genera(1);
-            HitOrMissDialog homDialog = new HitOrMissDialog();
-            SampleMeanDialog smDialog = new SampleMeanDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
-            //frameGraphHitOrMiss();
-            homDialog.setVisible(true);
-            smDialog.setVisible(true);
-            homDialog.setRisultati(risultati);
-            smDialog.setRisultati(risultati1);
-            //HOMGraph.setRisultati(risultati);
-            sm.setRisultati1(risultati1);
-            av.setRisultati(risultati);
-            //av.setRisultati1(risultati1);
-            av.stampa();
-            av.getCov();
-            av.getVarSM();
-            //HOMGraph.setVisible(true);
-            //SM_result.setText(sm.logarithmic()+"");
-        }
-        if(expLog_fun.isSelected()){
-            //HoM_result.setText(hom.hitOrMissExpLog()+"");
-            risultati = hom.hitOrMissExpLog();
-            risultati1 = sm.genera(0);
-            HitOrMissDialog homDialog = new HitOrMissDialog();
-            SampleMeanDialog smDialog = new SampleMeanDialog();
-            FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
-            //frameGraphHitOrMiss();
-            homDialog.setVisible(true);
-            homDialog.setRisultati(risultati);
-            smDialog.setVisible(true);
-            smDialog.setRisultati(risultati1);
-            //HOMGraph.setRisultati(risultati);
-            sm.setRisultati1(risultati1);
-            av.setRisultati(risultati);
-            //av.setRisultati1(risultati1);
-            av.stampa();
-            av.getCov();
-            av.getVarSM();
-            //HOMGraph.setVisible(true);
-            //SM_result.setText(sm.expLog()+"");
-        }
+        else JOptionPane.showMessageDialog(null, "Campi non selezionati correttamente");
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        
+    }//GEN-LAST:event_formKeyReleased
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
     public void frameGraphHitOrMiss(){
-        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
     }
     /*public void frameGraphSampleMean(){
         FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
@@ -254,6 +286,23 @@ public class UI extends javax.swing.JFrame {
             System.out.println("in method: "+risultati[i][0]);
         return risultati;
     }
+    
+    public void enableButton(){
+        if(linear_fun.isSelected() || exp_fun.isSelected() || log_fun.isSelected() || expLog_fun.isSelected()){
+            if(!jList1.isSelectionEmpty()){
+                if(jTextFieldA.getText().length() != 0 && jTextFieldB.getText().length() != 0){
+                    if(Integer.parseInt(jTextFieldB.getText())>Integer.parseInt(jTextFieldA.getText())){
+                        jButton1.setEnabled(true);
+                    }
+                    else jButton1.setEnabled(false);
+                }
+                else jButton1.setEnabled(false);
+            }
+            else jButton1.setEnabled(false);
+        }
+        else jButton1.setEnabled(false);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

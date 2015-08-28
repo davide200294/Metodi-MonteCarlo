@@ -64,7 +64,7 @@ public class SampleMeanDialog extends javax.swing.JFrame {
         confidence_result = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setLocation(new java.awt.Point(100, 650));
+        setLocation(new java.awt.Point(300, 650));
 
         jLabel1.setText("Risultati SampleMean");
 

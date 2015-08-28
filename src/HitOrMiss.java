@@ -20,12 +20,9 @@ public class HitOrMiss {
     }
     
     public float[][] hitOrMissLinear(){
-        //ricerca massimo della funzione
-        float c = (float) a;
-        for (int i=a+1;i<=b;i++){
-            if(i>c) 
-                c = (float) i;
-            }
+        // c = massimo della funzione
+        float c = (float) b;
+        
         int nh;
         
         //int n = 10000000;
@@ -37,10 +34,10 @@ public class HitOrMiss {
             nh = 0;
             System.out.println("k: "+k+" - iterazioni "+iteration[k]);
             for (int i=0; i<iteration[k];i++){
-                float x = (float) (a+Math.random()*(b-a));
+                float x = (float) (a+(Math.random()*(b-a)));
                 float y = (float) (Math.random()*c);
                 
-                float z = a + x*(b-a);
+                float z = a + (x*(b-a));
                 
                 if(z>=c*y)
                     nh++; 
@@ -51,9 +48,10 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f); //deviazione standard
             risultati[k][0] = integral;
             System.out.println("nh = "+nh+" media = "+risultati[k][0]);
+            //intervallo di confidenza
             if(perc == 0){
                 risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
                 risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
@@ -71,12 +69,9 @@ public class HitOrMiss {
         }
     
     public float[][] hitOrMissExp(){
-         //ricerca massimo della funzione
-        float c = (float) a*a;
-        for (int i=a+1;i<=b;i++){
-            if(i*i>c) 
-                c = (float) i*i;
-            }
+        // c = massimo della funzione
+        float c = (float) b*b;
+        
         float nh;
         
         //int n = 10000000;
@@ -90,9 +85,9 @@ public class HitOrMiss {
                 float x = (float) (a+Math.random()*(b-a));
                 float y = (float) (Math.random()*c);
             
-                float z = a + x*(b-a);
+                float z = a + (x*(b-a));
             
-                if((z*z)>=c*y)
+                if((z*z)>=(c*y))
                     nh++;
                 }
             float p = (float) nh/iteration[k];
@@ -119,12 +114,9 @@ public class HitOrMiss {
         }
     
     public float[][] hitOrMissLog(){
-         //ricerca massimo della funzione
-        float c = (float) Math.log(a);
-        for (int i=a+1;i<=b;i++){
-            if(Math.log(i)>c) 
-                c = (float) Math.log(i);
-            }
+        // c = massimo della funzione
+        float c = (float) Math.log(b);
+        
         float nh;
         
         //int n = 10000000;
@@ -139,9 +131,9 @@ public class HitOrMiss {
                 float x = (float) (a+Math.random()*(b-a));
                 float y = (float) (Math.random()*c);
             
-                float z = a + x*(b-a);
+                float z = a + (x*(b-a));
             
-                if(Math.log(z)>=c*y)
+                if(Math.log(z)>=(c*y))
                     nh++;
                 }
             float p = (float) nh/iteration[k];
@@ -168,12 +160,9 @@ public class HitOrMiss {
         }
     
     public float[][] hitOrMissExpLog(){
-         //ricerca massimo della funzione
-        float c = (float) ((float) Math.log(a)*Math.log(a));
-        for (int i=a+1;i<=b;i++){
-            if(Math.log(i)*Math.log(i)>c) 
-                c = (float) i;
-            }
+        // c = massimo della funzione
+        float c = (float) ((float) Math.log(b)*Math.log(b));
+        
         float nh;
         
         //int n = 10000000;
@@ -187,15 +176,14 @@ public class HitOrMiss {
                 float x = (float) (a+Math.random()*(b-a));
                 float y = (float) (Math.random()*c);
                 
-                float z = a + x*(b-a);
+                float z = a + (x*(b-a));
             
-                if(Math.log(z)*Math.log(z)>=c*y)
+                if((Math.log(z)*Math.log(z))>=(c*y))
                     nh++;
                 }
             float p = (float) nh/iteration[k];
             int d = b-a;
             float integral = (float) (d*c*p);
-            //return integral;
             risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
             risultati[k][0] = integral;
             
@@ -214,4 +202,5 @@ public class HitOrMiss {
             }
         return risultati;
         }
+    
     }
