@@ -168,7 +168,8 @@ public class UI extends javax.swing.JFrame {
                         AnthiteticVariable av = new AnthiteticVariable();
                             if(linear_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissLinear()+"");
-                                risultati = hom.hitOrMissLinear();
+                                //risultati = hom.hitOrMissLinear();
+                                risultati = hom.hitOrMiss(3);
                                 risultati1 = sm.genera(3);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
@@ -189,7 +190,8 @@ public class UI extends javax.swing.JFrame {
                             }
                             if(exp_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissExp()+"");
-                                risultati = hom.hitOrMissExp();
+                                //risultati = hom.hitOrMissExp();
+                                risultati = hom.hitOrMiss(2);
                                 risultati1 = sm.genera(2);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
@@ -211,7 +213,8 @@ public class UI extends javax.swing.JFrame {
                             }
                             if(log_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissLog()+"");
-                                risultati = hom.hitOrMissLog();
+                                //risultati = hom.hitOrMissLog();
+                                risultati = hom.hitOrMiss(3);
                                 risultati1 = sm.genera(1);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
@@ -233,7 +236,8 @@ public class UI extends javax.swing.JFrame {
                             }
                             if(expLog_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissExpLog()+"");
-                                risultati = hom.hitOrMissExpLog();
+                                //risultati = hom.hitOrMissExpLog();
+                                risultati = hom.hitOrMiss(1);
                                 risultati1 = sm.genera(0);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();

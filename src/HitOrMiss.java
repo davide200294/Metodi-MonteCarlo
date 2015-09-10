@@ -19,31 +19,20 @@ public class HitOrMiss {
         
     }
     
-    public float[][] hitOrMissLinear(){
-        // c = massimo della funzione
-        float c = (float) b;
+    public float[][] hitOrMiss(int index){
+        int nh = 0;
+        float c = maximum(index);
         
-        int nh;
-        
-        //int n = 10000000;
-        //float media[] = new float[5];
-        //float confidenza[][] = new float[5][2];
-        //float dev_stand[] = new float[5];
-        //inizio algoritmo vero e proprio
         for(int k=0;k<iteration.length;k++){
-            nh = 0;
-            System.out.println("k: "+k+" - iterazioni "+iteration[k]);
-            for (int i=0; i<iteration[k];i++){
+            for(int j=0;j<iteration[k];j++){
                 float x = (float) (a+(Math.random()*(b-a)));
                 float y = (float) (Math.random()*c);
                 
                 float z = a + (x*(b-a));
-                
-                if(z>=c*y)
-                    nh++; 
-                
-                }
             
+                if(hasBeenHitted(index, z, c, y))
+                    nh++;   
+            }
             float p = (float) nh/iteration[k];
             int d = b-a;
             float integral = (float) (d*c*p);
@@ -66,141 +55,41 @@ public class HitOrMiss {
                 }
             }
         return risultati;
-        }
+    }
     
-    public float[][] hitOrMissExp(){
-        // c = massimo della funzione
-        float c = (float) b*b;
+    private float maximum(int n){
+        if(n == 0)
+            return (float)Math.pow(Math.log(b), 2);
+        else if (n == 1)
+            return (float) Math.log(b);
+        else if (n == 2)
+            return (float)Math.pow(b, 2);
+        else return (float)b;
         
-        float nh;
-        
-        //int n = 10000000;
-        //float media[] = new float[5];
-        //float confidenza[][] = new float[5][2];
-        //float dev_stand[] = new float[5];
-        //inizio algoritmo vero e proprio
-        for(int k=0;k<iteration.length;k++){
-            nh = 0;
-            for (int i=0; i<iteration[k];i++){
-                float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (Math.random()*c);
-            
-                float z = a + (x*(b-a));
-            
-                if((z*z)>=(c*y))
-                    nh++;
-                }
-            float p = (float) nh/iteration[k];
-            int d = b-a;
-            float integral = (float) (d*c*p);
-            //return integral;
-            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
-            risultati[k][0] = integral;
-            
-            if(perc == 0){
-                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 1){
-                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 2){
-                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
-                }
-            }
-        return risultati;
-        }
+    }
     
-    public float[][] hitOrMissLog(){
-        // c = massimo della funzione
-        float c = (float) Math.log(b);
+    private boolean hasBeenHitted(int n, float z, float c, float y){
+        if(n == 0)
+            if((Math.pow(Math.log(z), 2))>=(c*y))
+                    return true;
+            else return false;
         
-        float nh;
+        else if (n == 1)
+            if(Math.log(z)>=(c*y))
+                return true;
+            else return false;
         
-        //int n = 10000000;
-        //float media[] = new float[5];
-        //float confidenza[][] = new float[5][2];
-        //float dev_stand[] = new float[5];
-        //inizio algoritmo vero e proprio
-        for(int k=0;k<iteration.length;k++){
-            nh = 0;
-            for (int i=0; i<iteration[k];i++){
-                
-                float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (Math.random()*c);
-            
-                float z = a + (x*(b-a));
-            
-                if(Math.log(z)>=(c*y))
-                    nh++;
-                }
-            float p = (float) nh/iteration[k];
-            int d = b-a;
-            float integral = (float) (d*c*p);
-            //return integral;
-            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
-            risultati[k][0] = integral;
-            
-            if(perc == 0){
-                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 1){
-                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 2){
-                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
-                }
-            }
-        return risultati;
-        }
-    
-    public float[][] hitOrMissExpLog(){
-        // c = massimo della funzione
-        float c = (float) ((float) Math.log(b)*Math.log(b));
+        else if (n == 2)
+            if(Math.pow(z, 2)>=(c*y))
+                return true;
+            else return false;
         
-        float nh;
+        else if (n == 3)
+            if(z>=(c*y))
+                return true;
+            else return false;
         
-        //int n = 10000000;
-        //float media[] = new float[5];
-        //float confidenza[][] = new float[5][2];
-        //float dev_stand[] = new float[5];
-        //inizio algoritmo vero e proprio
-        for(int k=0;k<iteration.length;k++){
-            nh = 0;
-            for (int i=0; i<iteration[k];i++){
-                float x = (float) (a+Math.random()*(b-a));
-                float y = (float) (Math.random()*c);
-                
-                float z = a + (x*(b-a));
-            
-                if((Math.log(z)*Math.log(z))>=(c*y))
-                    nh++;
-                }
-            float p = (float) nh/iteration[k];
-            int d = b-a;
-            float integral = (float) (d*c*p);
-            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
-            risultati[k][0] = integral;
-            
-            if(perc == 0){
-                risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.64f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 1){
-                risultati[k+11][0] = (float) (integral-(1.96f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(1.96f*risultati[k+6][0]*c*(b-a)));
-                }
-            else if(perc == 2){
-                risultati[k+11][0] = (float) (integral-(2.57f*risultati[k+6][0]*c*(b-a)));
-                risultati[k+11][1] = (float) (integral+(2.57f*risultati[k+6][0]*c*(b-a)));
-                }
-            }
-        return risultati;
+        else return false;
         }
     
     }
