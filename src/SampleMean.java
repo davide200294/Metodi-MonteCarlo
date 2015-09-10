@@ -23,32 +23,74 @@ public class SampleMean {
         this.perc = perc;
     }
     
+    private double calcoloVarianza(double x[]){
+        double media = calcoloMedia(x);
+        double varianza = 0;
+        double prob = 1d/(double)x.length;
+        for(int i=0;i<x.length;i++)
+            varianza+=(double)(((x[i]-media)*(x[i]-media))*prob);
+        
+        return varianza;
+    }
     
+    private double calcoloMedia(double x[]){
+        double media=0d;
+        
+        double prob = 1d/(double)x.length;
+        
+        for(int i=0;i<x.length;i++)
+            media+=x[i]*prob;
+     
+        return media;
+    }
     
     public double [][] genera(int n){
         for(int i = 0; i<tentativi.length; i++){
             double tmp = 0;
+            double tmp2 = 0;
             double c=0d;
+            double aux;
+            double x[] = new double[tentativi[i]];
             for(int j = 0; j<tentativi[i]; j++){
+                
                 if(n == 0){
-                    tmp+= expLog();
+                    aux = expLog();
+                    x[j] = aux;
+                    tmp+= aux;
+                    tmp2+=aux*aux;
                     c = maximumExpLog();
                 }
                 else if(n==1){
-                    tmp+= logarithmic();
+                    aux = logarithmic();
+                    x[j] = aux;
+                    tmp+= aux;
+                    tmp2+= aux*aux;
                     c = maximumLog();
                 }
                 else if(n==2){
-                    tmp+= exponential();
+                    aux = exponential();
+                    x[j] = aux;
+                    tmp+= aux;
+                    tmp2+= aux*aux;
                     c = maximumExp();
                 }
                 else{
-                    tmp+= linear();
+                    aux = linear();
+                    x[j] = aux;
+                    tmp+= aux;
+                    tmp2+= aux*aux;
                     c = maximumLinear();
                 }
+                
             }
             
-            risultati1[i][0]+=(tmp*(b-a))/tentativi[i];
+            risultati1[i][0]=(tmp*(b-a))/tentativi[i];
+            //risultati1[i+6][0] = ((tmp2/tentativi[i]) - Math.pow((tmp/tentativi[i]),2));
+            double varianza = calcoloVarianza(x);
+            double ba_difference_square = (double)Math.pow(b-a, 2);
+            double tentativi_square = (double)Math.pow(tentativi[i], 2);
+            System.out.println("VARIANZA SAMPLE MEAN  = "+varianza);
+            risultati1[i+6][0] = (double)Math.pow((ba_difference_square/tentativi_square)*varianza,0.5);
             if(perc == 0){
                 risultati1[i+11][0] = (float) (risultati1[i][0]-(1.64f*risultati1[i+6][0]*c*(b-a)));
                 risultati1[i+11][1] = (float) (risultati1[i][0]+(1.64f*risultati1[i+6][0]*c*(b-a)));

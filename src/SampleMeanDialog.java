@@ -192,39 +192,6 @@ public class SampleMeanDialog extends javax.swing.JFrame {
         }
     }                                 
     
-    /*public void showFrameChart(){
-        DefaultCategoryDataset data = new DefaultCategoryDataset();
-        data.addValue(risultati[0][0], ""+risultati[0][0] , "10");
-        data.addValue(risultati[1][0], ""+risultati[1][0] , "100");
-        data.addValue(risultati[2][0], ""+risultati[2][0] , "1000");
-        data.addValue(risultati[3][0], ""+risultati[3][0] , "10000");
-        data.addValue(risultati[4][0], ""+risultati[4][0] , "100000");
-        
-                
-        JFreeChart graph = ChartFactory.createLineChart (
-        "Grafico Theta Hit or Miss",
-        "Iterazioni",
-        "Theta",
-        data,
-        PlotOrientation.VERTICAL,
-        false,
-        false,
-        true);
-        
-        //XYPlot plot = (XYPlot) graph.getPlot ();
-        
-        //BarRenderer renderer = null;
-        CategoryPlot plot = graph.getCategoryPlot();
-        //renderer = new BarRenderer();
-        ChartFrame frame = new ChartFrame("Frame", graph);
-        frame.setVisible(true);
-        frame.setSize(400, 400);
-        frame.setLocation(300, 10);
-    }*/
-    
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

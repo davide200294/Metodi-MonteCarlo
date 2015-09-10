@@ -48,7 +48,7 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f); //deviazione standard
+            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f); //deviazione standard
             risultati[k][0] = integral;
             System.out.println("nh = "+nh+" media = "+risultati[k][0]);
             //intervallo di confidenza
@@ -94,7 +94,7 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
@@ -140,7 +140,7 @@ public class HitOrMiss {
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
-            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
@@ -184,7 +184,7 @@ public class HitOrMiss {
             float p = (float) nh/iteration[k];
             int d = b-a;
             float integral = (float) (d*c*p);
-            risultati[k+6][0] = (float)Math.pow((p*(1-p))/iteration[k], 0.5f);
+            risultati[k+6][0] = (float)Math.pow(((integral*(c*(b-a)*integral))/iteration[k]), 0.5f);
             risultati[k][0] = integral;
             
             if(perc == 0){
