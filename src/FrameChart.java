@@ -21,12 +21,12 @@ import org.jfree.data.xy.*;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
-public class FrameGraphHitOrMiss {
+public class FrameChart {
     
     float risultati[][] = new float[18][2];
     double risultati1[][] = new double[18][2];
     
-    public FrameGraphHitOrMiss(float risultati[][], double risultati1[][]){
+    public FrameChart(float risultati[][], double risultati1[][]){
         this.risultati = risultati;
         this.risultati1 = risultati1;
         showFrameChart();

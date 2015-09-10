@@ -89,7 +89,7 @@ public class SampleMean {
             double varianza = calcoloVarianza(x);
             double ba_difference_square = (double)Math.pow(b-a, 2);
             double tentativi_square = (double)Math.pow(tentativi[i], 2);
-            System.out.println("VARIANZA SAMPLE MEAN  = "+varianza);
+            
             risultati1[i+6][0] = (double)Math.pow((ba_difference_square/tentativi_square)*varianza,0.5);
             if(perc == 0){
                 risultati1[i+11][0] = (float) (risultati1[i][0]-(1.64f*risultati1[i+6][0]*c*(b-a)));

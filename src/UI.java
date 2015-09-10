@@ -172,10 +172,10 @@ public class UI extends javax.swing.JFrame {
                                 risultati1 = sm.genera(3);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                FrameChart chart = new FrameChart(risultati, risultati1);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
-                                //HOMGraph.setRisultati(risultati);
+                                //chart.setRisultati(risultati);
                                 sm.setRisultati1(risultati1);
                                 av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
@@ -184,7 +184,7 @@ public class UI extends javax.swing.JFrame {
                                 av.getVarSM();
                                 homDialog.setVisible(true);
                                 smDialog.setVisible(true);
-                                //HOMGraph.setVisible(true);
+                                //chart.setVisible(true);
                                 //SM_result.setText(sm.linear()+"");
                             }
                             if(exp_fun.isSelected()){
@@ -193,20 +193,20 @@ public class UI extends javax.swing.JFrame {
                                 risultati1 = sm.genera(2);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                FrameChart chart = new FrameChart(risultati, risultati1);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
-                                //HOMGraph.setRisultati(risultati);
+                                //chart.setRisultati(risultati);
                                 sm.setRisultati1(risultati1);
                                 av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
                                 av.stampa();
                                 av.getCov();
                                 av.getVarSM();
-                                //HOMGraph.setVisible(true);
+                                //chart.setVisible(true);
                                 //SM_result.setText(sm.exponential()+"");
                             }
                             if(log_fun.isSelected()){
@@ -215,20 +215,20 @@ public class UI extends javax.swing.JFrame {
                                 risultati1 = sm.genera(1);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                FrameChart chart = new FrameChart(risultati, risultati1);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 smDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
-                                //HOMGraph.setRisultati(risultati);
+                                //chart.setRisultati(risultati);
                                 sm.setRisultati1(risultati1);
                                 av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
                                 av.stampa();
                                 av.getCov();
                                 av.getVarSM();
-                                //HOMGraph.setVisible(true);
+                                //chart.setVisible(true);
                                 //SM_result.setText(sm.logarithmic()+"");
                             }
                             if(expLog_fun.isSelected()){
@@ -237,20 +237,20 @@ public class UI extends javax.swing.JFrame {
                                 risultati1 = sm.genera(0);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+                                FrameChart chart = new FrameChart(risultati, risultati1);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
-                                //HOMGraph.setRisultati(risultati);
+                                //chart.setRisultati(risultati);
                                 sm.setRisultati1(risultati1);
                                 av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
                                 av.stampa();
                                 av.getCov();
                                 av.getVarSM();
-                                //HOMGraph.setVisible(true);
+                                //chart.setVisible(true);
                                 //SM_result.setText(sm.expLog()+"");
                         }
                     }
@@ -275,10 +275,10 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     public void frameGraphHitOrMiss(){
-        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati, risultati1);
+        FrameChart chart = new FrameChart(risultati, risultati1);
     }
     /*public void frameGraphSampleMean(){
-        FrameGraphHitOrMiss HOMGraph = new FrameGraphHitOrMiss(risultati);
+        FrameGraphHitOrMiss chart = new FrameGraphHitOrMiss(risultati);
     }*/
     
     public float[][] getRisultati(){
@@ -287,21 +287,7 @@ public class UI extends javax.swing.JFrame {
         return risultati;
     }
     
-    public void enableButton(){
-        if(linear_fun.isSelected() || exp_fun.isSelected() || log_fun.isSelected() || expLog_fun.isSelected()){
-            if(!jList1.isSelectionEmpty()){
-                if(jTextFieldA.getText().length() != 0 && jTextFieldB.getText().length() != 0){
-                    if(Integer.parseInt(jTextFieldB.getText())>Integer.parseInt(jTextFieldA.getText())){
-                        jButton1.setEnabled(true);
-                    }
-                    else jButton1.setEnabled(false);
-                }
-                else jButton1.setEnabled(false);
-            }
-            else jButton1.setEnabled(false);
-        }
-        else jButton1.setEnabled(false);
-    }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
