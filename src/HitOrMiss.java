@@ -22,6 +22,7 @@ public class HitOrMiss {
     public float[][] hitOrMiss(int index){
         int nh = 0;
         float c = maximum(index);
+        System.out.println("MASSIMO - - - > "+c);
         
         for(int k=0;k<iteration.length;k++){
             for(int j=0;j<iteration[k];j++){
@@ -75,7 +76,7 @@ public class HitOrMiss {
             else return false;
         
         else if (n == 1)
-            if(Math.log(z)>=(c*y))
+            if(Math.log(z)>=c*y)
                 return true;
             else return false;
         
