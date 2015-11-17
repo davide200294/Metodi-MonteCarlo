@@ -166,24 +166,22 @@ public class UI extends javax.swing.JFrame {
                         //frameGraphSampleMean();
                         HitOrMiss hom = new HitOrMiss(a, b, perc);
                         SampleMean sm = new SampleMean(a,b, perc);
-                        AnthiteticVariable av = new AnthiteticVariable();
+                        AnthiteticVariable av = new AnthiteticVariable(a,b,perc);
                             if(linear_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissLinear()+"");
                                 //risultati = hom.hitOrMissLinear();
                                 risultati = hom.hitOrMiss(3);
                                 risultati1 = sm.genera(3);
+                                risultati2 = av.genera(3);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
                                 FrameChart chart = new FrameChart(risultati, risultati1);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
                                 //chart.setRisultati(risultati);
-                                sm.setRisultati1(risultati1);
-                                av.setRisultati(risultati);
+                                //sm.setRisultati1(risultati1);
+                                //av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
-                                av.stampa();
-                                av.getCov();
-                                av.getVarSM();
                                 homDialog.setVisible(true);
                                 smDialog.setVisible(true);
                                 //chart.setVisible(true);
@@ -194,6 +192,7 @@ public class UI extends javax.swing.JFrame {
                                 //risultati = hom.hitOrMissExp();
                                 risultati = hom.hitOrMiss(2);
                                 risultati1 = sm.genera(2);
+                                risultati2 = av.genera(2);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
                                 FrameChart chart = new FrameChart(risultati, risultati1);
@@ -202,13 +201,7 @@ public class UI extends javax.swing.JFrame {
                                 homDialog.setRisultati(risultati);
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
-                                //chart.setRisultati(risultati);
-                                sm.setRisultati1(risultati1);
-                                av.setRisultati(risultati);
-                                //av.setRisultati1(risultati1);
-                                av.stampa();
-                                av.getCov();
-                                av.getVarSM();
+                                //chart.setRisultati(risultati);                              
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.exponential()+"");
                             }
@@ -217,6 +210,7 @@ public class UI extends javax.swing.JFrame {
                                 //risultati = hom.hitOrMissLog();
                                 risultati = hom.hitOrMiss(1);
                                 risultati1 = sm.genera(1);
+                                risultati2 = av.genera(1);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
                                 FrameChart chart = new FrameChart(risultati, risultati1);
@@ -226,12 +220,7 @@ public class UI extends javax.swing.JFrame {
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
                                 //chart.setRisultati(risultati);
-                                sm.setRisultati1(risultati1);
-                                av.setRisultati(risultati);
-                                //av.setRisultati1(risultati1);
-                                av.stampa();
-                                av.getCov();
-                                av.getVarSM();
+                                sm.setRisultati1(risultati1);                
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.logarithmic()+"");
                             }
@@ -240,6 +229,7 @@ public class UI extends javax.swing.JFrame {
                                 //risultati = hom.hitOrMissExpLog();
                                 risultati = hom.hitOrMiss(0);
                                 risultati1 = sm.genera(0);
+                                risultati2 = av.genera(0);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
                                 FrameChart chart = new FrameChart(risultati, risultati1);
@@ -249,12 +239,7 @@ public class UI extends javax.swing.JFrame {
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
                                 //chart.setRisultati(risultati);
-                                sm.setRisultati1(risultati1);
-                                av.setRisultati(risultati);
-                                //av.setRisultati1(risultati1);
-                                av.stampa();
-                                av.getCov();
-                                av.getVarSM();
+                                sm.setRisultati1(risultati1); 
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.expLog()+"");
                         }
