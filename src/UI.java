@@ -16,9 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class UI extends javax.swing.JFrame {
     
-    float risultati[][] = new float[18][2];
-    double risultati1[][] = new double[18][2];
-    
+    float risultati[][] = new float[18][2];  //hit or miss
+    double risultati1[][] = new double[18][2]; //sample mean
+    double risultati2[][] = new double[18][2]; //variabile antitetica
+     
     public UI() {
         initComponents();
         //enableButton();

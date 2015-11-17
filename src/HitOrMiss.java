@@ -32,15 +32,15 @@ public class HitOrMiss {
                 float z = a + (x*(b-a));
             
                 if(hasBeenHitted(index, z, c, y))
-                    nh++;   
+                    nh++;   //Il punto in cui riccade sotto la funzione
             }
             float p = (float) nh/iteration[k];
             int d = b-a;
             float integral = (float) (d*c*p);
             //return integral;
             risultati[k+6][0] = (float)Math.pow(((p*(1-p))/iteration[k]), 0.5f); //deviazione standard
-            risultati[k][0] = integral;
-            System.out.println("nh = "+nh+" media = "+risultati[k][0]);
+            risultati[k][0] = integral; //theta
+            System.out.println("nh = "+nh+" theta = "+risultati[k][0]);
             //intervallo di confidenza
             if(perc == 0){
                 risultati[k+11][0] = (float) (integral-(1.64f*risultati[k+6][0]*c*(b-a)));
