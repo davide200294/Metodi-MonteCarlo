@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 public class SampleMeanDialog extends javax.swing.JFrame {
 
     //private UI ui;
-    private double[][] risultati = new double[18][2];
+    private float[][] risultati = new float[18][2];
     DecimalFormat df;
     int index;
     //FrameGraphHitOrMiss HOMGraph;
@@ -33,7 +33,7 @@ public class SampleMeanDialog extends javax.swing.JFrame {
         
     }
     
-    public void setRisultati(double risultati[][]){
+    public void setRisultati(float risultati[][]){
         //stampaRisultati();
         this.risultati = risultati;
     }

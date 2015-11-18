@@ -17,8 +17,8 @@ import javax.swing.JOptionPane;
 public class UI extends javax.swing.JFrame {
     
     float risultati[][] = new float[18][2];  //hit or miss
-    double risultati1[][] = new double[18][2]; //sample mean
-    double risultati2[][] = new double[18][2]; //variabile antitetica
+    float risultati1[][] = new float[18][2]; //sample mean
+    float risultati2[][] = new float[18][2]; //variabile antitetica
      
     public UI() {
         initComponents();

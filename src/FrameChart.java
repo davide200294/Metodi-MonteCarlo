@@ -24,10 +24,10 @@ import org.jfree.ui.RefineryUtilities;
 public class FrameChart {
     
     float risultati[][] = new float[18][2];
-    double risultati1[][] = new double[18][2];
-    double risultati2[][] = new double[18][2];
+    float risultati1[][] = new float[18][2];
+    float risultati2[][] = new float[18][2];
     
-    public FrameChart(float risultati[][], double risultati1[][], double risultati2[][]){
+    public FrameChart(float risultati[][], float risultati1[][], float risultati2[][]){
         this.risultati = risultati;
         this.risultati1 = risultati1;
         this.risultati2 = risultati2;
