@@ -8,14 +8,14 @@
  *
  * @author giovy
  */
-public class AnthiteticVariable {
+public class AnthiteticVariates {
     private int a;
     private int b;
     private int perc;
     protected double[][] risultati2 = new double[18][2]; 
     protected int tentativi[] = new int [6];
     
-    public AnthiteticVariable(int a1, int b1, int perc){
+    public AnthiteticVariates(int a1, int b1, int perc){
         a = a1;  b = b1;
         tentativi[0]=10;
         tentativi[1]=100;

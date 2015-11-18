@@ -166,7 +166,7 @@ public class UI extends javax.swing.JFrame {
                         //frameGraphSampleMean();
                         HitOrMiss hom = new HitOrMiss(a, b, perc);
                         SampleMean sm = new SampleMean(a,b, perc);
-                        AnthiteticVariable av = new AnthiteticVariable(a,b,perc);
+                        AnthiteticVariates av = new AnthiteticVariates(a,b,perc);
                             if(linear_fun.isSelected()){
                                 //HoM_result.setText(hom.hitOrMissLinear()+"");
                                 //risultati = hom.hitOrMissLinear();
@@ -175,15 +175,18 @@ public class UI extends javax.swing.JFrame {
                                 risultati2 = av.genera(3);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameChart chart = new FrameChart(risultati, risultati1);
+                                AnthiteticVariatesDialog avDialog = new AnthiteticVariatesDialog();
+                                FrameChart chart = new FrameChart(risultati, risultati1, risultati2);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
+                                avDialog.setRisultati(risultati2);
                                 //chart.setRisultati(risultati);
                                 //sm.setRisultati1(risultati1);
                                 //av.setRisultati(risultati);
                                 //av.setRisultati1(risultati1);
                                 homDialog.setVisible(true);
                                 smDialog.setVisible(true);
+                                avDialog.setVisible(true);
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.linear()+"");
                             }
@@ -195,12 +198,15 @@ public class UI extends javax.swing.JFrame {
                                 risultati2 = av.genera(2);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameChart chart = new FrameChart(risultati, risultati1);
+                                AnthiteticVariatesDialog avDialog = new AnthiteticVariatesDialog();
+                                FrameChart chart = new FrameChart(risultati, risultati1,risultati2);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
+                                avDialog.setRisultati(risultati2);
+                                avDialog.setVisible(true);
                                 //chart.setRisultati(risultati);                              
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.exponential()+"");
@@ -213,12 +219,15 @@ public class UI extends javax.swing.JFrame {
                                 risultati2 = av.genera(1);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameChart chart = new FrameChart(risultati, risultati1);
+                                AnthiteticVariatesDialog avDialog = new AnthiteticVariatesDialog();
+                                FrameChart chart = new FrameChart(risultati, risultati1,risultati2);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 smDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setRisultati(risultati1);
+                                avDialog.setRisultati(risultati2);
+                                avDialog.setVisible(true);
                                 //chart.setRisultati(risultati);
                                 sm.setRisultati1(risultati1);                
                                 //chart.setVisible(true);
@@ -232,14 +241,16 @@ public class UI extends javax.swing.JFrame {
                                 risultati2 = av.genera(0);
                                 HitOrMissDialog homDialog = new HitOrMissDialog();
                                 SampleMeanDialog smDialog = new SampleMeanDialog();
-                                FrameChart chart = new FrameChart(risultati, risultati1);
+                                AnthiteticVariatesDialog avDialog = new AnthiteticVariatesDialog();
+                                FrameChart chart = new FrameChart(risultati, risultati1,risultati2);
                                 //frameGraphHitOrMiss();
                                 homDialog.setVisible(true);
                                 homDialog.setRisultati(risultati);
                                 smDialog.setVisible(true);
                                 smDialog.setRisultati(risultati1);
                                 //chart.setRisultati(risultati);
-                                sm.setRisultati1(risultati1); 
+                                avDialog.setRisultati(risultati2);
+                                avDialog.setVisible(true);
                                 //chart.setVisible(true);
                                 //SM_result.setText(sm.expLog()+"");
                         }
@@ -265,7 +276,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     public void frameGraphHitOrMiss(){
-        FrameChart chart = new FrameChart(risultati, risultati1);
+        FrameChart chart = new FrameChart(risultati, risultati1,risultati2);
     }
     /*public void frameGraphSampleMean(){
         FrameGraphHitOrMiss chart = new FrameGraphHitOrMiss(risultati);

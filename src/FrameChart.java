@@ -25,10 +25,12 @@ public class FrameChart {
     
     float risultati[][] = new float[18][2];
     double risultati1[][] = new double[18][2];
+    double risultati2[][] = new double[18][2];
     
-    public FrameChart(float risultati[][], double risultati1[][]){
+    public FrameChart(float risultati[][], double risultati1[][], double risultati2[][]){
         this.risultati = risultati;
         this.risultati1 = risultati1;
+        this.risultati2 = risultati2;
         showFrameChart();
     }
     
@@ -48,6 +50,13 @@ public class FrameChart {
         data.addValue(risultati1[3][0], "Sample Mean" , "10000");
         data.addValue(risultati1[4][0], "Sample Mean" , "100000");
         data.addValue(risultati1[5][0], "Sample Mean" , "1000000");
+        //risultatiAntitheticVariates
+        data.addValue(risultati2[0][0], "Variabile Antitetica" , "10");
+        data.addValue(risultati2[1][0], "Variabile Antitetica" , "100");
+        data.addValue(risultati2[2][0], "Variabile Antitetica" , "1000");
+        data.addValue(risultati2[3][0], "Variabile Antitetica" , "10000");
+        data.addValue(risultati2[4][0], "Variabile Antitetica" , "100000");
+        data.addValue(risultati2[5][0], "Variabile Antitetica" , "1000000");
         
                 
         JFreeChart graph = ChartFactory.createLineChart (
